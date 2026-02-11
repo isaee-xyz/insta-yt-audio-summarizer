@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   audio-summarizer:
     build: .
@@ -10,14 +8,13 @@ services:
     volumes:
       - ./temp:/usr/src/app/temp
     networks:
-      - default
       - proxy
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.audio-summarizer.rule=Host(`api.isaee.xyz`)"
       - "traefik.http.routers.audio-summarizer.entrypoints=websecure"
       - "traefik.http.routers.audio-summarizer.tls.certresolver=myresolver"
-      - "traefik.http.services.audio-summarizer.loadbalancer.server.port=3005"
+      - "traefik.http.services.audio-summarizer.loadbalancer.server.port=${PORT:-3005}"
     environment:
       - PORT=${PORT:-3005}
       - GOOGLE_AI_API_KEY=${GOOGLE_AI_API_KEY}
