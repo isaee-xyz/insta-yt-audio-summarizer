@@ -19,8 +19,12 @@ jobs:
         key: ${{ secrets.DO_SSH_KEY }}
         script: |
           cd /root/insta-yt-audio-summarizer
-          git pull origin main
-          cp .env.example .env
-          # Note: You need to manually populate .env with secrets on the server once
+          git fetch origin main
+          git reset --hard origin/main
+          # Only create .env if it doesn't exist
+          if [ ! -f .env ]; then
+            cp .env.example .env
+            echo "WARNING: Created .env from example. Please populate secrets on server."
+          fi
           docker compose down
           docker compose up -d --build
