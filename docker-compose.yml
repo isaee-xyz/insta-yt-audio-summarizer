@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  audio-summarizer:
+    build: .
+    container_name: audio-summarizer-api
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    volumes:
+      - ./temp:/usr/src/app/temp
+    environment:
+      - PORT=3000
+      - GOOGLE_AI_API_KEY=${GOOGLE_AI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL:-gemini-3.0-flash}
+      - TEMP_DIR=/usr/src/app/temp
+    user: node
