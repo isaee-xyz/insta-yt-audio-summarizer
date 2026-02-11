@@ -35,11 +35,16 @@ async function downloadAudio(url, outputDir) {
                 '--audio-format', 'mp3',
                 '--audio-quality', '0',
                 '-o', path.join(outputDir, `${fileId}.%(ext)s`),
-                '--no-playlist'
+                '--no-playlist',
+                '--user-agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'
             ];
 
-            // For Instagram, we might need cookies or specific user agent in some cases, 
-            // but yt-dlp handles most public reels well.
+            // Add cookies file for Instagram authentication if available
+            const cookiesFile = process.env.COOKIES_FILE || '/usr/src/app/cookies.txt';
+            if (fs.existsSync(cookiesFile)) {
+                console.log('Using cookies file for authentication');
+                command.push('--cookies', cookiesFile);
+            }
 
             let downloadedPath = '';
 
