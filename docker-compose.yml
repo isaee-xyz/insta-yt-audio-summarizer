@@ -9,9 +9,22 @@ services:
       - "${PORT:-3005}:${PORT:-3005}"
     volumes:
       - ./temp:/usr/src/app/temp
+    networks:
+      - default
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.audio-summarizer.rule=Host(`api.isaee.xyz`)"
+      - "traefik.http.routers.audio-summarizer.entrypoints=websecure"
+      - "traefik.http.routers.audio-summarizer.tls.certresolver=myresolver"
+      - "traefik.http.services.audio-summarizer.loadbalancer.server.port=3000"
     environment:
       - PORT=${PORT:-3005}
       - GOOGLE_AI_API_KEY=${GOOGLE_AI_API_KEY}
       - GEMINI_MODEL=${GEMINI_MODEL:-gemini-3.0-flash}
       - TEMP_DIR=/usr/src/app/temp
     user: node
+
+networks:
+  proxy:
+    external: true
