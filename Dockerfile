@@ -3,6 +3,7 @@ FROM node:18-alpine
 # Install system dependencies
 # python3 and py3-pip are required for yt-dlp
 # ffmpeg is required for audio processing
+# Install system dependencies
 RUN apk add --no-cache \
     python3 \
     py3-pip \
@@ -10,9 +11,9 @@ RUN apk add --no-cache \
     ca-certificates \
     curl
 
-# Install yt-dlp
-RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
-    && chmod a+rx /usr/local/bin/yt-dlp
+# Remove existing yt-dlp if present (from previous layers or base images) and install strict latest via pip
+RUN rm -rf /usr/local/bin/yt-dlp && \
+    pip3 install --no-cache-dir --break-system-packages --upgrade yt-dlp
 
 # Create app directory
 WORKDIR /usr/src/app
