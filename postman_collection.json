@@ -1,0 +1,89 @@
+{
+    "info": {
+        "_postman_id": "b1a2c3d4-e5f6-7890-a1b2-c3d4e5f67890",
+        "name": "Audio Summary API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:3005/health",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3005",
+                    "path": [
+                        "health"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Process Video (Local)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"url\": \"https://www.youtube.com/shorts/Cw8H8G7jA_c\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:3005/api/process",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3005",
+                    "path": [
+                        "api",
+                        "process"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Process Video (Production)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"url\": \"https://www.youtube.com/shorts/Cw8H8G7jA_c\"\n}"
+                },
+                "url": {
+                    "raw": "https://api.isaee.xyz/api/process",
+                    "protocol": "https",
+                    "host": [
+                        "api",
+                        "isaee",
+                        "xyz"
+                    ],
+                    "path": [
+                        "api",
+                        "process"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}

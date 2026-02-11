@@ -63,7 +63,6 @@ app.post('/api/process', async (req, res) => {
                 duration: metadata.duration,
                 uploader: metadata.uploader
             },
-            transcript,
             summary
         });
 

@@ -6,11 +6,11 @@ services:
     container_name: audio-summarizer-api
     restart: unless-stopped
     ports:
-      - "${PORT:-3000}:3000"
+      - "${PORT:-3005}:${PORT:-3005}"
     volumes:
       - ./temp:/usr/src/app/temp
     environment:
-      - PORT=3000
+      - PORT=${PORT:-3005}
       - GOOGLE_AI_API_KEY=${GOOGLE_AI_API_KEY}
       - GEMINI_MODEL=${GEMINI_MODEL:-gemini-3.0-flash}
       - TEMP_DIR=/usr/src/app/temp

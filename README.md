@@ -30,7 +30,7 @@ A dockerized REST API service that downloads audio from Instagram Reels and YouT
 4.  **Test the API**
     ```bash
     ```bash
-    curl -X POST http://localhost:3000/api/process \
+    curl -X POST http://localhost:3005/api/process \
       -H "Content-Type: application/json" \
       -d '{"url": "YOUR_VIDEO_URL_HERE"}'
     ```
