@@ -7,7 +7,7 @@ services:
       - "${PORT:-3005}:${PORT:-3005}"
     volumes:
       - ./temp:/usr/src/app/temp
-      - ./cookies.txt:/usr/src/app/cookies.txt:ro
+      - ./cookies.txt:/usr/src/app/cookies.txt
     networks:
       - proxy
     labels:
