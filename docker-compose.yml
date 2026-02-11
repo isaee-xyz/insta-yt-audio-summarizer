@@ -17,7 +17,7 @@ services:
       - "traefik.http.routers.audio-summarizer.rule=Host(`api.isaee.xyz`)"
       - "traefik.http.routers.audio-summarizer.entrypoints=websecure"
       - "traefik.http.routers.audio-summarizer.tls.certresolver=myresolver"
-      - "traefik.http.services.audio-summarizer.loadbalancer.server.port=3000"
+      - "traefik.http.services.audio-summarizer.loadbalancer.server.port=3005"
     environment:
       - PORT=${PORT:-3005}
       - GOOGLE_AI_API_KEY=${GOOGLE_AI_API_KEY}
