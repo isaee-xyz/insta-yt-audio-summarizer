@@ -23,7 +23,7 @@ app.get('/health', (req, res) => {
 });
 
 // Process endpoint
-app.post('/api/process', async (req, res) => {
+app.post('/api/summarize-audio', async (req, res) => {
     const { url } = req.body;
     let audioPath = null;
 

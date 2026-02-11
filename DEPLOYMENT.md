@@ -1,4 +1,4 @@
-# Deployment Guide
+ # Deployment Guide
 
 This guide covers how to deploy the Audio Summary API to your Digital Ocean server (`167.71.232.107`) and configure it with a custom domain using Cloudflare.
 
@@ -126,7 +126,13 @@ Now you can use this API in your n8n workflows!
 
 **HTTP Request Node:**
 -   **Method**: POST
--   **URL**: `https://api.isaee.xyz/api/process`
+-   **URL**: `https://api.isaee.xyz/api/summarize-audio`
+-   **Example `curl` command**:
+    ```bash
+    curl -X POST https://api.isaee.xyz/api/summarize-audio \
+      -H "Content-Type: application/json" \
+      -d '{"url": "https://www.instagram.com/reel/..."}'
+    ```
 -   **Body**: JSON
     ```json
     {
