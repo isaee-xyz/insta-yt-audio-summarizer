@@ -26,5 +26,9 @@ jobs:
             cp .env.example .env
             echo "WARNING: Created .env from example. Please populate secrets on server."
           fi
+          # Ensure Node user in container can write to these mapped volumes
+          chmod 666 cookies.txt
+          mkdir -p temp
+          chmod 777 temp
           docker compose down
           docker compose up -d --build
