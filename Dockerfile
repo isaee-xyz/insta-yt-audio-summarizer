@@ -25,8 +25,8 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Create temp directory
-RUN mkdir -p temp && chown -R node:node temp
+# Create temp directory and set permissions
+RUN mkdir -p temp && chown -R node:node /usr/src/app
 
 # Expose port
 EXPOSE 3000
